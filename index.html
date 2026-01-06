@@ -200,6 +200,65 @@
             font-weight: 600;
         }
 
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 2rem;
+            padding-left: 2rem;
+            border-left: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .lang-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            background: none;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.3rem;
+            position: relative;
+        }
+
+        .lang-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 100%;
+            height: 1px;
+            background: var(--gold-antique);
+            transition: transform 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            color: var(--gold-antique);
+        }
+
+        .lang-btn.active {
+            color: var(--gold-antique);
+        }
+
+        .lang-btn.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .lang-separator {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.7rem;
+        }
+
+        .lang-switch-mobile {
+            display: none;
+        }
+
+        .lang-switch-desktop {
+            display: flex;
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -231,7 +290,8 @@
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 3rem;
+            padding: 0 3rem; 
+            height: 80px; 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -244,45 +304,25 @@
             position: relative;
             width: 200px;
             height: 80px;
-            justify-content: center;
             z-index: 1002;
+            padding: 0;             
+            align-items: center;   
         }
 
         .logo-svg {
             position: absolute;
             height: 250px;
             width: auto;
-            top: -90px;
+            top: 50%;          
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(-50%); 
             color: rgba(255, 255, 255, 0.8);
             transition: color 0.3s ease;
             pointer-events: none;
         }
+
         .logo:hover .logo-svg {
             color: var(--gold-antique);
-        }
-
-        .logo-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: var(--white-alabaster);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        .logo:hover .logo-name {
-            color: var(--gold-antique);
-        }
-
-        .logo-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.8rem;
-            color: var(--gold-antique);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-top: -3px;
         }
 
         .menu-toggle {
@@ -441,7 +481,7 @@
             font-style: italic;
             font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--gold-antique);
-            margin-bottom: -10px;
+            margin-bottom: 0px;
             letter-spacing: 0.05em;
         }
 
@@ -629,12 +669,6 @@
             color: var(--green-black);
         }
 
-        .divider-line {
-            width: 60px;
-            height: 1px;
-            background-color: var(--gold-antique);
-        }
-
         .divider-symbol {
             font-family: 'Cinzel', serif;
             color: var(--gold-antique);
@@ -645,13 +679,6 @@
         @keyframes symbolPulse {
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: start;
         }
 
         .about-content {
@@ -687,56 +714,6 @@
             padding-top: 0.2rem;
             color: var(--green-racing);
         
-        }
-
-        .credentials-box {
-            margin-top: 3rem;
-            padding: 2.5rem;
-            background-color: #fff;
-            border: 1px solid #eaddcf;
-            box-shadow: var(--shadow-soft);
-            position: relative;
-            transition: all 0.5s ease;
-        }
-
-        .credentials-box:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-5px);
-        }
-        
-        .credentials-box::before {
-            content: '';
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 4px;
-            border: 1px solid #eaddcf;
-            pointer-events: none;
-        }
-
-        .credential-list {
-            list-style: none;
-        }
-
-        .credential-list li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: baseline;
-            gap: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .credential-list li:hover {
-            transform: translateX(5px);
-        }
-
-        .credential-bullet {
-            width: 6px;
-            height: 6px;
-            background-color: var(--gold-antique);
-            transform: rotate(45deg);
-            flex-shrink: 0;
         }
 
         .services-section {
@@ -950,6 +927,16 @@
             line-height: 1.8;
         }
 
+        .faq-answer-inner a {
+            color: var(--green-moss);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .faq-answer-inner a:hover {
+            color: var(--gold-antique);
+        }
+
         .contact-layout {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
@@ -1007,7 +994,7 @@
 
                 .contact-row {
                     display: flex;
-                    align-items: flex-start;
+                    align-items: center;
                     justify-content: space-between;
                     gap: 1rem;
                 }
@@ -1030,7 +1017,8 @@
                     transition: all 0.3s ease;
                     text-decoration: none;
                     flex-shrink: 0;
-                    margin-top: 0.25rem;
+                    margin-top: 0;
+                    align-self: center;
                 }
 
                 .contact-action-btn:hover {
@@ -1057,7 +1045,7 @@
             position: relative;
             z-index: 2;
             border: 4px solid var(--gold-antique);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            box-shadow: none;
             transition: transform 0.5s ease; 
             overflow: hidden;
             background: #f5f5f5; 
@@ -1302,20 +1290,20 @@
             .hero-cta { 
                 justify-content: center; 
             }
-            .about-grid { 
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
+
             .contact-layout { 
                 grid-template-columns: 1fr;
                 padding: 2rem;
             }
             .header-container {
-                padding: 1rem 2rem;
+                padding: 0.75rem 1rem;
+            }
+            .logo {
+                margin-left: -0.5rem;
             }
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
             .menu-toggle {
                 display: flex;
             }
@@ -1356,6 +1344,23 @@
                 display: none;
             }
 
+            .lang-switch-mobile {
+                display: flex;
+                justify-content: center;
+                padding: 1.5rem 0;
+                border-bottom: none;
+            }
+
+            .lang-switch-mobile .lang-switch {
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            .lang-switch-desktop {
+                display: none;
+            }
+
             .hero-title { 
                 font-size: 2.5rem; 
             }
@@ -1374,10 +1379,6 @@
 
             .section-header {
                 margin-bottom: 3rem;
-            }
-
-            .credentials-box {
-                padding: 1.5rem;
             }
 
             .footer-content {
@@ -1407,6 +1408,12 @@
         }
 
         @media (max-width: 480px) {
+            .preloader-logo-container {
+                width: 650px;
+                max-width: clamp(60vw, 72vw, 80vw);/
+                position: relative;
+            }
+
             .hero-cta {
                 flex-direction: column;
                 width: 100%;
@@ -1564,13 +1571,25 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Strona Główna</a></li>
-                    <li><a href="#about">Kancelaria</a></li>
-                    <li><a href="#services">Praktyka</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="#home" data-pl="Strona Główna" data-en="Home">Strona Główna</a></li>
+                    <li><a href="#about" data-pl="Kancelaria" data-en="About">Kancelaria</a></li>
+                    <li><a href="#services" data-pl="Praktyka" data-en="Practice">Praktyka</a></li>
+                    <li><a href="#faq" data-pl="FAQ" data-en="FAQ">FAQ</a></li>
+                    <li><a href="#contact" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
+                    <li class="lang-switch-mobile">
+                        <div class="lang-switch">
+                            <button class="lang-btn active" data-lang="pl">PL</button>
+                            <span class="lang-separator">|</span>
+                            <button class="lang-btn" data-lang="en">EN</button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
+            <div class="lang-switch lang-switch-desktop">
+                <button class="lang-btn active" data-lang="pl">PL</button>
+                <span class="lang-separator">|</span>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
         </div>
     </header>
 
@@ -1583,17 +1602,17 @@
         <div class="hero-content">
             <div class="hero-inner">
                 <div class="hero-text">
-                    <span class="eyebrow hero-eyebrow">Tradycja • Dyskrecja • Skuteczność</span>
+                    <span class="eyebrow hero-eyebrow" data-pl="Tradycja • Dyskrecja • Skuteczność" data-en="Tradition • Discretion • Effectiveness">Tradycja • Dyskrecja • Skuteczność</span>
                     <h1 class="hero-title">
-                        <span>Adwokat</span>
+                        <span data-pl="Adwokat" data-en="Attorney">Adwokat</span>
                         Roman Giertych
                     </h1>
-                    <p class="hero-description">
+                    <p class="hero-description" data-pl="Specjalizujemy się przede wszystkim w procesach sądowych – zarówno karnych, jak i cywilnych. Filarem kancelarii jest zespół dziesięciu wybitnych prawników. W sprawach nie widzimy tylko artykułów i paragrafów, ale człowieka, któremu chcemy pomóc." data-en="We specialize primarily in court proceedings – both criminal and civil. The foundation of our law firm is a team of ten outstanding lawyers. In cases, we don't just see articles and paragraphs, but a person we want to help.">
                         Specjalizujemy się przede wszystkim w procesach sądowych – zarówno karnych, jak i cywilnych. Filarem kancelarii jest zespół dziesięciu wybitnych prawników. W sprawach nie widzimy tylko artykułów i paragrafów, ale człowieka, któremu chcemy pomóc.
                     </p>
                     <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary">Umów Spotkanie</a>
-                        <a href="#services" class="btn btn-outline">Obszary Praktyki</a>
+                        <a href="#contact" class="btn btn-primary" data-pl="Umów Spotkanie" data-en="Schedule Meeting">Umów Spotkanie</a>
+                        <a href="#services" class="btn btn-outline" data-pl="Obszary Praktyki" data-en="Practice Areas">Obszary Praktyki</a>
                     </div>
                 </div>
                 <div class="hero-portrait">
@@ -1608,27 +1627,27 @@
     <section id="about">
         <div class="section-container">
             <div class="section-header fade-up">
-                <span class="eyebrow">O Kancelarii</span>
-                <h2 class="section-title">Szanowni Państwo!</h2>
+                <span class="eyebrow" data-pl="O Kancelarii" data-en="About the Firm">O Kancelarii</span>
+                <h2 class="section-title" data-pl="Szanowni Państwo!" data-en="Dear Clients!">Szanowni Państwo!</h2>
             </div>
 
             <div class="about-content fade-up">
-                <p>
+                <p data-pl="<span class='drop-cap'>S</span>erdecznie dziękujemy za zainteresowanie stroną naszej kancelarii. Często jednym z pierwszych pytań stawianych przez osoby kontaktujące się z nami jest to, czy prowadzimy „zwyczajne sprawy" dla „zwyczajnych ludzi". Pytanie to pada w kontekście reprezentowania przez nas osób publicznych i występowania w sprawach medialnych. Zapewniamy Państwa, że te wszystkie nagłośnione procesy stanowią zaledwie ułamek spraw, które prowadzimy każdego dnia." data-en="<span class='drop-cap'>T</span>hank you for your interest in our law firm. One of the first questions we often hear from people contacting us is whether we handle 'ordinary cases' for 'ordinary people.' This question arises in the context of our representation of public figures and involvement in high-profile cases. We assure you that these publicized cases represent only a fraction of the matters we handle every day.">
                     <span class="drop-cap">S</span>erdecznie dziękujemy za zainteresowanie stroną naszej kancelarii. Często jednym z pierwszych pytań stawianych przez osoby kontaktujące się z nami jest to, czy prowadzimy „zwyczajne sprawy" dla „zwyczajnych ludzi". Pytanie to pada w kontekście reprezentowania przez nas osób publicznych i występowania w sprawach medialnych. Zapewniamy Państwa, że te wszystkie nagłośnione procesy stanowią zaledwie ułamek spraw, które prowadzimy każdego dnia.
                 </p>
-                <p>
+                <p data-pl="Filarem naszej kancelarii jest zespół składający się z dziesięciu prawników – grono wybitnych fachowców specjalizujących się przede wszystkim w procesach sądowych, zarówno karnych, jak i cywilnych. Jedynym naszym ograniczeniem jest unikanie reprezentowania Skarbu Państwa i podmiotów z nim powiązanych – dlatego naszymi klientami są wyłącznie osoby i firmy prywatne." data-en="The foundation of our firm is a team of ten lawyers – a group of outstanding professionals specializing primarily in court proceedings, both criminal and civil. Our only limitation is avoiding representation of the State Treasury and related entities – therefore our clients are exclusively private individuals and companies.">
                     Filarem naszej kancelarii jest zespół składający się z dziesięciu prawników – grono wybitnych fachowców specjalizujących się przede wszystkim w procesach sądowych, zarówno karnych, jak i cywilnych. Jedynym naszym ograniczeniem jest unikanie reprezentowania Skarbu Państwa i podmiotów z nim powiązanych – dlatego naszymi klientami są wyłącznie osoby i firmy prywatne.
                 </p>
-                <p>
+                <p data-pl="Z gronem zaufanych i sprawdzonych współpracowników jesteśmy gotowi poprowadzić właściwie każdą sprawę wymagającą obecności na sali sądowej lub sformułowania odpowiedniego pisma procesowego. Do każdego klienta podchodzimy indywidualnie, ponieważ w sprawach nie widzimy tylko artykułów i paragrafów, ale człowieka, któremu chcemy pomóc." data-en="With our trusted and proven associates, we are ready to handle virtually any case requiring court appearances or the preparation of appropriate procedural documents. We approach each client individually, because in cases we don't just see articles and paragraphs, but a person we want to help.">
                     Z gronem zaufanych i sprawdzonych współpracowników jesteśmy gotowi poprowadzić właściwie każdą sprawę wymagającą obecności na sali sądowej lub sformułowania odpowiedniego pisma procesowego. Do każdego klienta podchodzimy indywidualnie, ponieważ w sprawach nie widzimy tylko artykułów i paragrafów, ale człowieka, któremu chcemy pomóc.
                 </p>
-                <p>
+                <p data-pl="Nasza kancelaria prowadzi sprawy karne, administracyjne, cywilne oraz gospodarcze. Staramy się zapewniać opiekę prawną na najwyższym poziomie, stosując zasady profesjonalizmu i etyki zawodowej. Jedną z fundamentalnych zasad jest działanie wobec organów wymiaru sprawiedliwości z najwyższym szacunkiem i wyłącznie w oparciu o profesjonalizm zawodowy." data-en="Our firm handles criminal, administrative, civil, and commercial cases. We strive to provide legal services at the highest level, applying principles of professionalism and professional ethics. One of our fundamental principles is acting towards judicial authorities with the utmost respect and based solely on professional standards.">
                     Nasza kancelaria prowadzi sprawy karne, administracyjne, cywilne oraz gospodarcze. Staramy się zapewniać opiekę prawną na najwyższym poziomie, stosując zasady profesjonalizmu i etyki zawodowej. Jedną z fundamentalnych zasad jest działanie wobec organów wymiaru sprawiedliwości z najwyższym szacunkiem i wyłącznie w oparciu o profesjonalizm zawodowy.
                 </p>
-                <p>
+                <p data-pl="Sprawowanie przez adwokatów pracujących w kancelarii jakichkolwiek funkcji publicznych, uniwersyteckich czy mandatów parlamentarnych nie ma i nie może mieć najmniejszego wpływu na naszą pracę ani na organa wymiaru sprawiedliwości, przed którymi występujemy. Prosimy więc przy wyborze naszych usług kierować się oceną profesjonalizmu i liczyć wyłącznie na ten profesjonalizm. Jesteśmy przekonani, że sprawy wygrywa się na argumenty prawne – i tak właśnie działamy." data-en="Any public, academic, or parliamentary positions held by attorneys working at our firm have no and cannot have any influence on our work or on the judicial authorities before which we appear. Therefore, when choosing our services, please be guided by an assessment of professionalism and count solely on that professionalism. We are convinced that cases are won on legal arguments – and that is exactly how we operate.">
                     Sprawowanie przez adwokatów pracujących w kancelarii jakichkolwiek funkcji publicznych, uniwersyteckich czy mandatów parlamentarnych nie ma i nie może mieć najmniejszego wpływu na naszą pracę ani na organa wymiaru sprawiedliwości, przed którymi występujemy. Prosimy więc przy wyborze naszych usług kierować się oceną profesjonalizmu i liczyć wyłącznie na ten profesjonalizm. Jesteśmy przekonani, że sprawy wygrywa się na argumenty prawne – i tak właśnie działamy.
                 </p>
-                <p>
+                <p data-pl="Jeżeli macie Państwo jakikolwiek problem prawny – zapraszamy do kontaktu. Najlepiej opisać sprawę w wiadomości e-mail i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej." data-en="If you have any legal problem – please contact us. The best approach is to describe your case in an email and attach copies of the most important documents. We will try to respond as soon as possible.">
                     Jeżeli macie Państwo jakikolwiek problem prawny – zapraszamy do kontaktu. Najlepiej opisać sprawę w wiadomości e-mail i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej.
                 </p>
                 <div class="signature-container">
@@ -1643,8 +1662,8 @@
     <section id="services" class="services-section">
         <div class="section-container">
             <div class="section-header fade-up">
-                <span class="eyebrow">Specjalizacje</span>
-                <h2 class="section-title">Obszary Praktyki</h2>
+                <span class="eyebrow" data-pl="Specjalizacje" data-en="Specializations">Specjalizacje</span>
+                <h2 class="section-title" data-pl="Obszary Praktyki" data-en="Practice Areas">Obszary Praktyki</h2>
             </div>
             
             <div class="services-grid">
@@ -1653,8 +1672,8 @@
                     <div class="service-icon">
                         <i class="ph ph-gavel"></i>
                     </div>
-                    <h3>Prawo Karne</h3>
-                    <p>Obrona w postępowaniu przygotowawczym i sądowym, reprezentacja pokrzywdzonych oraz oskarżycieli posiłkowych.</p>
+                    <h3 data-pl="Prawo Karne" data-en="Criminal Law">Prawo Karne</h3>
+                    <p data-pl="Obrona w postępowaniu przygotowawczym i sądowym, reprezentacja pokrzywdzonych oraz oskarżycieli posiłkowych." data-en="Defense in preparatory and court proceedings, representation of victims and auxiliary prosecutors.">Obrona w postępowaniu przygotowawczym i sądowym, reprezentacja pokrzywdzonych oraz oskarżycieli posiłkowych.</p>
                 </div>
 
                 <div class="service-card scale-in" style="transition-delay: 0.1s;">
@@ -1662,8 +1681,8 @@
                     <div class="service-icon">
                         <i class="ph ph-handshake"></i>
                     </div>
-                    <h3>Prawo Cywilne</h3>
-                    <p>Reprezentacja w sporach majątkowych, sprawy o odszkodowania, ochrona dóbr osobistych oraz kompleksowa obsługa spraw spadkowych.</p>
+                    <h3 data-pl="Prawo Cywilne" data-en="Civil Law">Prawo Cywilne</h3>
+                    <p data-pl="Reprezentacja w sporach majątkowych, sprawy o odszkodowania, ochrona dóbr osobistych oraz kompleksowa obsługa spraw spadkowych." data-en="Representation in property disputes, compensation claims, protection of personal rights, and comprehensive handling of inheritance matters.">Reprezentacja w sporach majątkowych, sprawy o odszkodowania, ochrona dóbr osobistych oraz kompleksowa obsługa spraw spadkowych.</p>
                 </div>
 
                 <div class="service-card scale-in" style="transition-delay: 0.2s;">
@@ -1671,8 +1690,8 @@
                     <div class="service-icon">
                         <i class="ph ph-trend-up"></i>
                     </div>
-                    <h3>Prawo Gospodarcze</h3>
-                    <p>Strategiczne doradztwo dla przedsiębiorstw, tworzenie i opiniowanie umów handlowych, obsługa korporacyjna spółek.</p>
+                    <h3 data-pl="Prawo Gospodarcze" data-en="Commercial Law">Prawo Gospodarcze</h3>
+                    <p data-pl="Strategiczne doradztwo dla przedsiębiorstw, tworzenie i opiniowanie umów handlowych, obsługa korporacyjna spółek." data-en="Strategic consulting for businesses, drafting and reviewing commercial contracts, corporate services for companies.">Strategiczne doradztwo dla przedsiębiorstw, tworzenie i opiniowanie umów handlowych, obsługa korporacyjna spółek.</p>
                 </div>
 
                 <div class="service-card scale-in" style="transition-delay: 0.3s;">
@@ -1680,8 +1699,8 @@
                     <div class="service-icon">
                         <i class="ph ph-money"></i>
                     </div>
-                    <h3>Prawo Karne Skarbowe</h3>
-                    <p>Obrona w sprawach karnoskarbowych, reprezentacja w kontrolach podatkowych oraz doradztwo w zakresie ryzyka podatkowego.</p>
+                    <h3 data-pl="Prawo Karne Skarbowe" data-en="Fiscal Criminal Law">Prawo Karne Skarbowe</h3>
+                    <p data-pl="Obrona w sprawach karnoskarbowych, reprezentacja w kontrolach podatkowych oraz doradztwo w zakresie ryzyka podatkowego." data-en="Defense in fiscal criminal cases, representation in tax audits, and consulting on tax risk matters.">Obrona w sprawach karnoskarbowych, reprezentacja w kontrolach podatkowych oraz doradztwo w zakresie ryzyka podatkowego.</p>
                 </div>
 
                 <div class="service-card scale-in" style="transition-delay: 0.4s;">
@@ -1689,8 +1708,8 @@
                     <div class="service-icon">
                         <i class="ph ph-shield-check"></i>
                     </div>
-                    <h3>Dobra Osobiste</h3>
-                    <p>Skuteczna ochrona wizerunku i dobrego imienia, procesy o zniesławienie w mediach oraz walka z naruszeniami w internecie.</p>
+                    <h3 data-pl="Dobra Osobiste" data-en="Personal Rights">Dobra Osobiste</h3>
+                    <p data-pl="Skuteczna ochrona wizerunku i dobrego imienia, procesy o zniesławienie w mediach oraz walka z naruszeniami w internecie." data-en="Effective protection of image and reputation, defamation cases in media, and combating online violations.">Skuteczna ochrona wizerunku i dobrego imienia, procesy o zniesławienie w mediach oraz walka z naruszeniami w internecie.</p>
                 </div>
 
                 <div class="service-card scale-in" style="transition-delay: 0.5s;">
@@ -1698,8 +1717,8 @@
                     <div class="service-icon">
                         <i class="ph ph-bank"></i>
                     </div>
-                    <h3>Prawo Administracyjne</h3>
-                    <p>Reprezentacja przed organami administracji publicznej, sądami administracyjnymi oraz w postępowaniach kontrolnych i egzekucyjnych.</p>
+                    <h3 data-pl="Prawo Administracyjne" data-en="Administrative Law">Prawo Administracyjne</h3>
+                    <p data-pl="Reprezentacja przed organami administracji publicznej, sądami administracyjnymi oraz w postępowaniach kontrolnych i egzekucyjnych." data-en="Representation before public administration bodies, administrative courts, and in control and enforcement proceedings.">Reprezentacja przed organami administracji publicznej, sądami administracyjnymi oraz w postępowaniach kontrolnych i egzekucyjnych.</p>
                 </div>
             </div>
         </div>
@@ -1710,30 +1729,30 @@
     <section id="faq" class="faq-section">
         <div class="section-container">
             <div class="section-header fade-up">
-                <span class="eyebrow">Pytania i Odpowiedzi</span>
+                <span class="eyebrow" data-pl="Pytania i Odpowiedzi" data-en="Questions & Answers">Pytania i Odpowiedzi</span>
                 <h2 class="section-title">FAQ</h2>
             </div>
 
             <div class="faq-container">
                 <div class="faq-item fade-up">
                     <div class="faq-question">
-                        <h3>Jak umówić się na pierwszą konsultację prawną?</h3>
+                        <h3 data-pl="Jak umówić się na pierwszą konsultację prawną?" data-en="How to schedule the first legal consultation?">Jak umówić się na pierwszą konsultację prawną?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Najlepiej opisać problem w mailu na adres <a href="mailto:biuro@giertych-kancelaria.pl">biuro@giertych-kancelaria.pl</a> i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej. Można również zadzwonić pod numer +48 22 424 07 36 lub w sprawach nagłych: +48 503 011 501.
+                        <div class="faq-answer-inner" data-pl="Najlepiej opisać problem w mailu na adres <a href='mailto:kancelaria@giertych.com.pl'>kancelaria@giertych.com.pl</a> i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej. Można również zadzwonić pod numer <a href='tel:+48224240736'>+48 22 424 07 36</a> lub w sprawach nagłych: <a href='tel:+48503011501'>+48 503 011 501</a>." data-en="The best way is to describe your problem in an email to <a href='mailto:kancelaria@giertych.com.pl'>kancelaria@giertych.com.pl</a> and attach copies of the most important documents. We will try to respond as soon as possible. You can also call <a href='tel:+48224240736'>+48 22 424 07 36</a> or for urgent matters: <a href='tel:+48503011501'>+48 503 011 501</a>.">
+                            Najlepiej opisać problem w mailu na adres <a href="mailto:kancelaria@giertych.com.pl">kancelaria@giertych.com.pl</a> i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej. Można również zadzwonić pod numer <a href="tel:+48224240736">+48 22 424 07 36</a> lub w sprawach nagłych: <a href="tel:+48503011501">+48 503 011 501</a>.
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item fade-up" style="transition-delay: 0.1s;">
                     <div class="faq-question">
-                        <h3>Czy kancelaria prowadzi sprawy poza Warszawą?</h3>
+                        <h3 data-pl="Czy kancelaria prowadzi sprawy poza Warszawą?" data-en="Does the firm handle cases outside Warsaw?">Czy kancelaria prowadzi sprawy poza Warszawą?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="Tak, prowadzimy sprawy na terenie całego kraju. Posiadamy doświadczenie w występowaniu przed sądami wszystkich instancji w Polsce, w tym przed Sądem Najwyższym. W przypadku spraw poza Warszawą ustalamy indywidualne warunki współpracy uwzględniające koszty dojazdów." data-en="Yes, we handle cases throughout the country. We have experience appearing before courts of all instances in Poland, including the Supreme Court. For cases outside Warsaw, we establish individual cooperation terms including travel costs.">
                             Tak, prowadzimy sprawy na terenie całego kraju. Posiadamy doświadczenie w występowaniu przed sądami wszystkich instancji w Polsce, w tym przed Sądem Najwyższym. W przypadku spraw poza Warszawą ustalamy indywidualne warunki współpracy uwzględniające koszty dojazdów.
                         </div>
                     </div>
@@ -1741,11 +1760,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.2s;">
                     <div class="faq-question">
-                        <h3>Czy mogę liczyć na pełną dyskrecję w mojej sprawie?</h3>
+                        <h3 data-pl="Czy mogę liczyć na pełną dyskrecję w mojej sprawie?" data-en="Can I count on full discretion in my case?">Czy mogę liczyć na pełną dyskrecję w mojej sprawie?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="Absolutnie. Tajemnica adwokacka jest dla nas świętością. Wszystkie informacje przekazane w ramach współpracy są objęte bezwzględną poufnością, która nie jest ograniczona w czasie. Stosujemy również najwyższe standardy bezpieczeństwa w zakresie przechowywania dokumentacji." data-en="Absolutely. Attorney-client privilege is sacred to us. All information shared within our cooperation is covered by absolute confidentiality, which is not limited in time. We also apply the highest security standards for document storage.">
                             Absolutnie. Tajemnica adwokacka jest dla nas świętością. Wszystkie informacje przekazane w ramach współpracy są objęte bezwzględną poufnością, która nie jest ograniczona w czasie. Stosujemy również najwyższe standardy bezpieczeństwa w zakresie przechowywania dokumentacji.
                         </div>
                     </div>
@@ -1753,11 +1772,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.3s;">
                     <div class="faq-question">
-                        <h3>Czy oferujecie pomoc w mediacjach?</h3>
+                        <h3 data-pl="Czy oferujecie pomoc w mediacjach?" data-en="Do you offer assistance in mediations?">Czy oferujecie pomoc w mediacjach?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="Tak, pomagamy jako pełnomocnicy stron w postępowaniach mediacyjnych, dbając o ochronę interesów naszych Klientów. Mediacja to często szybsza i tańsza alternatywa dla postępowania sądowego." data-en="Yes, we assist as representatives of parties in mediation proceedings, ensuring the protection of our clients' interests. Mediation is often a faster and cheaper alternative to court proceedings.">
                             Tak, pomagamy jako pełnomocnicy stron w postępowaniach mediacyjnych, dbając o ochronę interesów naszych Klientów. Mediacja to często szybsza i tańsza alternatywa dla postępowania sądowego.
                         </div>
                     </div>
@@ -1765,11 +1784,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.35s;">
                     <div class="faq-question">
-                        <h3>Jakie dokumenty powinienem przygotować na pierwszą wizytę?</h3>
+                        <h3 data-pl="Jakie dokumenty powinienem przygotować na pierwszą wizytę?" data-en="What documents should I prepare for the first visit?">Jakie dokumenty powinienem przygotować na pierwszą wizytę?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="Zalecamy przygotowanie wszystkich dokumentów związanych ze sprawą: umów, korespondencji, decyzji administracyjnych, wyroków, wezwań do zapłaty itp. Pomocny będzie również chronologiczny opis zdarzeń. W przypadku wątpliwości prosimy o kontakt – podpowiemy, co może być istotne." data-en="We recommend preparing all documents related to your case: contracts, correspondence, administrative decisions, judgments, payment demands, etc. A chronological description of events will also be helpful. If in doubt, please contact us – we will advise what may be relevant.">
                             Zalecamy przygotowanie wszystkich dokumentów związanych ze sprawą: umów, korespondencji, decyzji administracyjnych, wyroków, wezwań do zapłaty itp. Pomocny będzie również chronologiczny opis zdarzeń. W przypadku wątpliwości prosimy o kontakt – podpowiemy, co może być istotne.
                         </div>
                     </div>
@@ -1777,11 +1796,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.4s;">
                     <div class="faq-question">
-                        <h3>Czy kancelaria obsługuje firmy i przedsiębiorców?</h3>
+                        <h3 data-pl="Czy kancelaria obsługuje firmy i przedsiębiorców?" data-en="Does the firm serve companies and entrepreneurs?">Czy kancelaria obsługuje firmy i przedsiębiorców?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="Oczywiście. Oferujemy kompleksową obsługę prawną przedsiębiorstw – od zakładania spółek, przez bieżące doradztwo, tworzenie i opiniowanie umów, po reprezentację w sporach gospodarczych. Możemy również pełnić funkcję stałego doradcy prawnego na zasadzie abonamentu." data-en="Of course. We offer comprehensive legal services for businesses – from establishing companies, through ongoing consulting, drafting and reviewing contracts, to representation in commercial disputes. We can also serve as a permanent legal advisor on a subscription basis.">
                             Oczywiście. Oferujemy kompleksową obsługę prawną przedsiębiorstw – od zakładania spółek, przez bieżące doradztwo, tworzenie i opiniowanie umów, po reprezentację w sporach gospodarczych. Możemy również pełnić funkcję stałego doradcy prawnego na zasadzie abonamentu.
                         </div>
                     </div>
@@ -1789,11 +1808,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.4s;">
                     <div class="faq-question">
-                        <h3>Czy przyjmujecie sprawy na etapie apelacji lub kasacji?</h3>
+                        <h3 data-pl="Czy przyjmujecie sprawy na etapie apelacji lub kasacji?" data-en="Do you take cases at the appeal or cassation stage?">Czy przyjmujecie sprawy na etapie apelacji lub kasacji?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="Tak, podejmujemy się prowadzenia spraw na każdym etapie postępowania, również gdy wcześniej reprezentowała Państwa inna kancelaria. Dokonujemy wówczas szczegółowej analizy dotychczasowego przebiegu sprawy." data-en="Yes, we undertake cases at any stage of proceedings, including when you were previously represented by another law firm. We then conduct a detailed analysis of the case history.">
                             Tak, podejmujemy się prowadzenia spraw na każdym etapie postępowania, również gdy wcześniej reprezentowała Państwa inna kancelaria. Dokonujemy wówczas szczegółowej analizy dotychczasowego przebiegu sprawy.
                         </div>
                     </div>
@@ -1801,11 +1820,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.4s;">
                     <div class="faq-question">
-                        <h3>Czy kancelaria zapewnia reprezentację w mediach?</h3>
+                        <h3 data-pl="Czy kancelaria zapewnia reprezentację w mediach?" data-en="Does the firm provide media representation?">Czy kancelaria zapewnia reprezentację w mediach?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="W sprawach medialnych oferujemy kompleksowe wsparcie, w tym przygotowanie oświadczeń prasowych i koordynację komunikacji z mediami, jeśli klient wyrazi taką wolę." data-en="In media cases, we offer comprehensive support, including preparation of press statements and coordination of media communication, if the client wishes.">
                             W sprawach medialnych oferujemy kompleksowe wsparcie, w tym przygotowanie oświadczeń prasowych i koordynację komunikacji z mediami, jeśli klient wyrazi taką wolę.
                         </div>
                     </div>
@@ -1813,11 +1832,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.4s;">
                     <div class="faq-question">
-                        <h3>Ile osób pracuje nad moją sprawą?</h3>
+                        <h3 data-pl="Ile osób pracuje nad moją sprawą?" data-en="How many people work on my case?">Ile osób pracuje nad moją sprawą?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="W zależności od złożoności sprawy, może być prowadzona przez jednego adwokata lub zespół specjalistów. Zawsze jednak wyznaczamy jedną osobę odpowiedzialną za kontakt z klientem." data-en="Depending on the complexity of the case, it may be handled by one attorney or a team of specialists. However, we always designate one person responsible for client communication.">
                             W zależności od złożoności sprawy, może być prowadzona przez jednego adwokata lub zespół specjalistów. Zawsze jednak wyznaczamy jedną osobę odpowiedzialną za kontakt z klientem.
                         </div>
                     </div>
@@ -1825,11 +1844,11 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.4s;">
                     <div class="faq-question">
-                        <h3>Czy kancelaria współpracuje z ekspertami z innych dziedzin?</h3>
+                        <h3 data-pl="Czy kancelaria współpracuje z ekspertami z innych dziedzin?" data-en="Does the firm cooperate with experts from other fields?">Czy kancelaria współpracuje z ekspertami z innych dziedzin?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
+                        <div class="faq-answer-inner" data-pl="Tak, współpracujemy z biegłymi sądowymi, rzeczoznawcami, ekspertami od kryminalistyki oraz specjalistami z różnych branż, gdy sprawa wymaga wiedzy specjalistycznej." data-en="Yes, we cooperate with court experts, appraisers, forensic experts, and specialists from various industries when a case requires specialized knowledge.">
                             Tak, współpracujemy z biegłymi sądowymi, rzeczoznawcami, ekspertami od kryminalistyki oraz specjalistami z różnych branż, gdy sprawa wymaga wiedzy specjalistycznej.
                         </div>
                     </div>
@@ -1837,15 +1856,16 @@
 
                 <div class="faq-item fade-up" style="transition-delay: 0.45s;">
                     <div class="faq-question">
-                        <h3>Czy możliwa jest konsultacja online lub telefoniczna?</h3>
+                        <h3 data-pl="Czy możliwa jest konsultacja telefoniczna?" data-en="Is phone consultation possible?">Czy możliwa jest konsultacja telefoniczna?</h3>
                         <div class="faq-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Tak, oferujemy konsultacje za pośrednictwem wideokonferencji oraz telefonicznie. Jest to wygodne rozwiązanie dla Klientów spoza Warszawy lub osób z ograniczonymi możliwościami dojazdu. Jakość i zakres konsultacji online jest identyczny jak w przypadku spotkań osobistych.
+                        <div class="faq-answer-inner" data-pl="Tak, oferujemy konsultacje telefoniczne. Jest to wygodne rozwiązanie dla Klientów spoza Warszawy lub osób z ograniczonymi możliwościami dojazdu. Konsultacje online nie są obecnie dostępne." data-en="Yes, we offer phone consultations. This is a convenient solution for clients from outside Warsaw or those with limited travel options. Online consultations are currently not available.">
+                            Tak, oferujemy konsultacje telefoniczne. Jest to wygodne rozwiązanie dla Klientów spoza Warszawy lub osób z ograniczonymi możliwościami dojazdu. Konsultacje online nie są obecnie dostępne.
                         </div>
                     </div>
                 </div>
+            
             </div>
         </div>
     </section>
@@ -1855,17 +1875,17 @@
     <section id="contact">
         <div class="section-container">
             <div class="section-header fade-up">
-                <span class="eyebrow">Kontakt</span>
-                <h2 class="section-title">Umów Konsultację</h2>
+                <span class="eyebrow" data-pl="Kontakt" data-en="Contact">Kontakt</span>
+                <h2 class="section-title" data-pl="Umów Konsultację" data-en="Schedule Consultation">Umów Konsultację</h2>
             </div>
 
             <div class="contact-layout scale-in">
                 <div class="contact-details">
-                    <h3>Kancelaria Adwokacka<br>Romana Giertycha</h3>
+                    <h3 data-pl="Kancelaria Adwokacka<br>Romana Giertycha" data-en="Law Office of<br>Roman Giertych">Kancelaria Adwokacka<br>Romana Giertycha</h3>
                     
                     <div class="contact-row">
                         <div>
-                            <span class="c-label">Adres</span>
+                            <span class="c-label" data-pl="Adres" data-en="Address">Adres</span>
                             <div class="c-value">ul. Nowy Świat 35 lokal 4<br>00-029 Warszawa</div>
                         </div>
                         <a href="https://www.google.com/maps/search/?api=1&query=ul.+Nowy+%C5%9Awiat+35,+00-029+Warszawa" target="_blank" rel="noopener noreferrer" class="contact-action-btn" title="Otwórz w Google Maps">
@@ -1875,7 +1895,7 @@
                     
                     <div class="contact-row">
                         <div>
-                            <span class="c-label">Telefon</span>
+                            <span class="c-label" data-pl="Telefon" data-en="Phone">Telefon</span>
                             <div class="c-value">+48 22 424 07 36</div>
                         </div>
                         <a href="tel:+48224240736" class="contact-action-btn" title="Zadzwoń">
@@ -1885,7 +1905,7 @@
 
                     <div class="contact-row">
                         <div>
-                            <span class="c-label">Telefon w sprawach nagłych</span>
+                            <span class="c-label" data-pl="Telefon w sprawach nagłych" data-en="Emergency Phone">Telefon w sprawach nagłych</span>
                             <div class="c-value">+48 503 011 501</div>
                         </div>
                         <a href="tel:+48503011501" class="contact-action-btn" title="Zadzwoń">
@@ -1895,8 +1915,8 @@
 
                     <div class="contact-row">
                         <div>
-                            <span class="c-label">E-mail</span>
-                            <div class="c-value"><a href="mailto:kancelaria@giertych.com.pl">kancelaria@giertych.com.pl</a></div>
+                            <span class="c-label" data-pl="E-mail" data-en="E-mail">E-mail</span>
+                            <div class="c-value">kancelaria@giertych.com.pl</div>
                         </div>
                         <a href="mailto:kancelaria@giertych.com.pl" class="contact-action-btn" title="Napisz e-mail">
                             <i class="ph ph-envelope"></i>
@@ -1905,8 +1925,8 @@
 
                     <div class="contact-row">
                         <div>
-                            <span class="c-label">Spotkania</span>
-                            <div class="c-value">Pn — Pt: 10:00 – 17:00<br><small style="color: var(--text-muted);">po wcześniejszym umówieniu</small></div>
+                            <span class="c-label" data-pl="Spotkania" data-en="Meetings">Spotkania</span>
+                            <div class="c-value" data-pl="Pn — Pt: 10:00 – 17:00<br><small style='color: var(--text-muted);'>po wcześniejszym umówieniu</small>" data-en="Mon — Fri: 10:00 – 17:00<br><small style='color: var(--text-muted);'>by prior appointment</small>">Pn — Pt: 10:00 – 17:00<br><small style="color: var(--text-muted);">po wcześniejszym umówieniu</small></div>
                         </div>
                     </div>
                 </div>
@@ -1924,27 +1944,27 @@
         <div class="footer-content">
             <div class="footer-logo">RG</div>
             <div class="footer-links">
-                <a href="#" onclick="openModal('modalNotaPrawna'); return false;">Nota Prawna</a>
+                <a href="#" onclick="openModal('modalNotaPrawna'); return false;" data-pl="Nota Prawna" data-en="Legal Notice">Nota Prawna</a>
             </div>
         </div>
-        <div class="footer-legal">
+        <div class="footer-legal" data-pl="&copy; 2026 Giertych Kancelarie Prawne S.K.A. Wszelkie prawa zastrzeżone." data-en="&copy; 2026 Giertych Law Firm S.K.A. All rights reserved.">
             &copy; 2026 Giertych Kancelarie Prawne S.K.A. Wszelkie prawa zastrzeżone.
         </div>
     </footer>
     <div class="modal-overlay" id="modalNotaPrawna">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modalNotaPrawna')">&times;</button>
-            <h3 class="modal-title">Nota Prawna</h3>
+            <h3 class="modal-title" data-pl="Nota Prawna" data-en="Legal Notice">Nota Prawna</h3>
             <div class="modal-text">
-                <h4>1. Materiały graficzne</h4>
-                <p>Zdjęcie w tle strony pochodzi z zasobów <strong>Adobe Stock</strong> i jest wykorzystywane na podstawie licencji standardowej Adobe Stock.</p>
+                <h4 data-pl="1. Materiały graficzne" data-en="1. Graphic Materials">1. Materiały graficzne</h4>
+                <p data-pl="Zdjęcie w tle strony pochodzi z zasobów Adobe Stock i jest wykorzystywane na podstawie licencji standardowej Adobe Stock." data-en="The background image comes from Adobe Stock resources and is used under the standard Adobe Stock license.">Zdjęcie w tle strony pochodzi z zasobów <strong>Adobe Stock</strong> i jest wykorzystywane na podstawie licencji standardowej Adobe Stock.</p>
                 
-                <h4>2. Mapy</h4>
-                <p>Mapa na stronie wykorzystuje dane z <strong>OpenStreetMap</strong> – projektu tworzącego wolne i otwarte mapy świata. Dane kartograficzne © współtwórcy <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>, udostępniane na licencji <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">ODbL</a></p>
-                <p>Warstwa wizualna mapy pochodzi z <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>.</p>
+                <h4 data-pl="2. Mapy" data-en="2. Maps">2. Mapy</h4>
+                <p data-pl="Mapa na stronie wykorzystuje dane z OpenStreetMap – projektu tworzącego wolne i otwarte mapy świata." data-en="The map on this website uses data from OpenStreetMap – a project creating free and open maps of the world.">Mapa na stronie wykorzystuje dane z <strong>OpenStreetMap</strong> – projektu tworzącego wolne i otwarte mapy świata. Dane kartograficzne © współtwórcy <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>, udostępniane na licencji <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">ODbL</a></p>
+                <p data-pl="Warstwa wizualna mapy pochodzi z CARTO." data-en="The visual layer of the map comes from CARTO.">Warstwa wizualna mapy pochodzi z <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>.</p>
                 
-                <h4>3. Prawa autorskie</h4>
-                <p>Wszelkie treści zawarte na niniejszej stronie, w tym teksty, grafiki i układ strony, stanowią własność Giertych Kancelarie Prawne S.K.A. i są chronione prawem autorskim.</p>
+                <h4 data-pl="3. Prawa autorskie" data-en="3. Copyright">3. Prawa autorskie</h4>
+                <p data-pl="Wszelkie treści zawarte na niniejszej stronie, w tym teksty, grafiki i układ strony, stanowią własność Giertych Kancelarie Prawne S.K.A. i są chronione prawem autorskim." data-en="All content on this website, including texts, graphics, and layout, is the property of Giertych Law Firm S.K.A. and is protected by copyright.">Wszelkie treści zawarte na niniejszej stronie, w tym teksty, grafiki i układ strony, stanowią własność Giertych Kancelarie Prawne S.K.A. i są chronione prawem autorskim.</p>
             </div>
         </div>
     </div>
@@ -2134,6 +2154,48 @@
                 heroImage.style.transform = `scale(1.05) translateY(${rate}px)`;
             }
         });
+
+        // Language switching functionality
+        let currentLang = 'pl';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update all elements with data-pl and data-en attributes
+            document.querySelectorAll('[data-pl][data-en]').forEach(el => {
+                const text = el.dataset[lang];
+                if (text) {
+                    el.innerHTML = text;
+                }
+            });
+
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+
+            // Store preference
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Initialize language switcher
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for saved preference
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
+                switchLanguage(savedLang);
+            }
+
+            // Add click handlers to language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchLanguage(btn.dataset.lang);
+                });
+            });
+        });
     </script>
 </body>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -2147,24 +2209,40 @@
             center: [lat, lon],
             zoom: 17,
             zoomControl: true,    
-            scrollWheelZoom: false,   
+            scrollWheelZoom: false,
+            dragging: false,
+            tap: false,
+            touchZoom: false,
+            doubleClickZoom: false,
             attributionControl: false 
         });
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            subdomains: 'abcd',
-            maxZoom: 20
-        }).addTo(map);
-
-        var logoIcon = L.icon({
-            iconUrl: 'logo-mapa.png', 
-            iconSize:     [80, 80],
-            iconAnchor:   [40, 40],
-            popupAnchor:  [0, -45]
+        map.on('click', function() {
+            map.dragging.enable();
+            map.touchZoom.enable();
+            map.doubleClickZoom.enable();
+            map.scrollWheelZoom.enable();
         });
 
-        var marker = L.marker([lat, lon], {icon: logoIcon}).addTo(map);
-        marker.bindPopup("<b>Kancelaria Adwokacka</b><br><b>Romana Giertycha</b>");
+        map.on('mouseout', function() {
+            map.dragging.disable();
+            map.touchZoom.disable();
+            map.doubleClickZoom.disable();
+            map.scrollWheelZoom.disable();
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        var customIcon = L.icon({
+            iconUrl: 'logo-mapa.png',
+            iconSize: [50, 50],
+            iconAnchor: [25, 50],
+            popupAnchor: [0, -50]
+        });
+
+        L.marker([lat, lon], {icon: customIcon}).addTo(map);
     });
 </script>
 </html>
