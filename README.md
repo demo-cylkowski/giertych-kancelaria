@@ -1,1 +1,0 @@
-# giertych-kancelaria

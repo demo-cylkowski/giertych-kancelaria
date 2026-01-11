@@ -2155,18 +2155,15 @@
             }
         });
 
-        // Language switching functionality
         let currentLang = 'pl';
 
         function switchLanguage(lang) {
             currentLang = lang;
             
-            // Update button states
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
-            // Update all elements with data-pl and data-en attributes
             document.querySelectorAll('[data-pl][data-en]').forEach(el => {
                 const text = el.dataset[lang];
                 if (text) {
@@ -2174,22 +2171,17 @@
                 }
             });
 
-            // Update html lang attribute
             document.documentElement.lang = lang;
 
-            // Store preference
             localStorage.setItem('preferredLang', lang);
         }
 
-        // Initialize language switcher
         document.addEventListener('DOMContentLoaded', () => {
-            // Check for saved preference
             const savedLang = localStorage.getItem('preferredLang');
             if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
                 switchLanguage(savedLang);
             }
 
-            // Add click handlers to language buttons
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     switchLanguage(btn.dataset.lang);
