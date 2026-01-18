@@ -200,15 +200,6 @@
             font-weight: 600;
         }
 
-        .lang-switch {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: 2rem;
-            padding-left: 2rem;
-            border-left: 1px solid rgba(197, 160, 89, 0.3);
-        }
-
         .lang-btn {
             font-family: 'Cinzel', serif;
             font-size: 0.75rem;
@@ -288,9 +279,9 @@
         }
 
         .header-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 3rem; 
+            padding: 0 4rem; 
             height: 80px; 
             display: flex;
             justify-content: space-between;
@@ -306,7 +297,8 @@
             height: 80px;
             z-index: 1002;
             padding: 0;             
-            align-items: center;   
+            align-items: center;
+            margin-right: auto;
         }
 
         .logo-svg {
@@ -323,6 +315,19 @@
 
         .logo:hover .logo-svg {
             color: var(--gold-antique);
+        }
+
+        nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
         }
 
         .menu-toggle {
@@ -356,12 +361,12 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: 2.2rem;
         }
 
         nav a {
             font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             letter-spacing: 0.1em;
@@ -804,6 +809,166 @@
             font-size: 0.95rem;
             color: var(--text-muted);
             line-height: 1.8;
+        }
+
+        /* Sekcja Medialni Klienci - Nowa Koncepcja */
+        .clients-section {
+            background: var(--white-alabaster);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clients-section .section-header {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .clients-section .eyebrow {
+            color: var(--gold-metallic);
+        }
+
+        .clients-section .section-title {
+            color: var(--green-black);
+        }
+
+        .clients-intro {
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .clients-intro p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+
+        .clients-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .clients-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .clients-column.left {
+            text-align: right;
+        }
+
+        .clients-column.right {
+            text-align: left;
+        }
+
+        .clients-divider {
+            width: 1px;
+            height: 100%;
+            min-height: 200px;
+            background: linear-gradient(180deg, 
+                transparent 0%, 
+                var(--gold-antique) 20%, 
+                var(--gold-antique) 80%, 
+                transparent 100%
+            );
+            opacity: 0.5;
+        }
+
+        .client-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--green-racing);
+            letter-spacing: 0.03em;
+            transition: all 0.4s ease;
+            display: block;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .client-name::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-antique);
+            transition: width 0.4s ease;
+        }
+
+        .clients-column.left .client-name::after {
+            right: 0;
+        }
+
+        .clients-column.right .client-name::after {
+            left: 0;
+        }
+
+        .client-name:hover {
+            color: var(--gold-metallic);
+        }
+
+        .client-name:hover::after {
+            width: 196px;
+        }
+
+        @media (max-width: 768px) {
+            .clients-wrapper {
+                grid-template-columns: 1fr;
+                gap: 0;
+                max-width: 300px;
+            }
+
+            .clients-column.left,
+            .clients-column.right {
+                text-align: center;
+            }
+
+            .clients-divider {
+                display: none;
+            }
+
+            .clients-column {
+                gap: 1rem;
+            }
+
+            .client-name {
+                font-size: 1.25rem;
+            }
+
+            .client-name::after {
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%);
+            }
+
+            .client-name:hover::after {
+                width: 160px;
+            }
+
+            .clients-intro {
+                margin-bottom: 3rem;
+            }
+
+            .clients-intro p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .clients-section .section-header {
+                margin-bottom: 1rem;
+            }
         }
 
         .faq-section {
@@ -1303,7 +1468,7 @@
             }
         }
         
-        @media (max-width: 1200px) {
+        @media (max-width: 1343px) {
             .menu-toggle {
                 display: flex;
             }
@@ -1311,6 +1476,7 @@
             nav {
                 position: fixed;
                 top: 0;
+                left: auto;
                 right: -100%;
                 width: 80%;
                 max-width: 300px;
@@ -1319,6 +1485,7 @@
                 padding: 6rem 2rem 2rem;
                 transition: right 0.4s ease;
                 box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+                transform: none;
             }
 
             nav.active {
@@ -1574,6 +1741,7 @@
                     <li><a href="#home" data-pl="Strona Główna" data-en="Home">Strona Główna</a></li>
                     <li><a href="#about" data-pl="Kancelaria" data-en="About">Kancelaria</a></li>
                     <li><a href="#services" data-pl="Praktyka" data-en="Practice">Praktyka</a></li>
+                    <li><a href="#clients" data-pl="Klienci" data-en="Clients">Klienci</a></li>
                     <li><a href="#faq" data-pl="FAQ" data-en="FAQ">FAQ</a></li>
                     <li><a href="#contact" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
                     <li class="lang-switch-mobile">
@@ -1726,6 +1894,43 @@
     <div class="divider">
         <span class="divider-symbol">§</span>
     </div>
+    
+    <!-- Sekcja Medialni Klienci -->
+    <section id="clients" class="clients-section">
+        <div class="section-container">
+            <div class="section-header fade-up">
+                <span class="eyebrow" data-pl="Zaufali Nam" data-en="They Trusted Us">Zaufali Nam</span>
+                <h2 class="section-title" data-pl="Wybrani Klienci" data-en="Selected Clients">Wybrani Klienci</h2>
+            </div>
+            
+            <div class="clients-intro fade-up">
+                <p data-pl="Na co dzień zajmujemy się zwykłymi sprawami zwykłych ludzi. Poniżej przedstawiamy jednak listę niektórych z naszych medialnych Klientów." 
+                   data-en="On a daily basis, we handle ordinary matters for ordinary people. Below, however, we present a list of some of our high-profile Clients.">
+                    Na co dzień zajmujemy się zwykłymi sprawami zwykłych ludzi. Poniżej przedstawiamy jednak listę niektórych z naszych medialnych Klientów.
+                </p>
+            </div>
+            
+            <div class="clients-wrapper fade-up">
+                <div class="clients-column left">
+                    <span class="client-name">Donald Tusk</span>
+                    <span class="client-name">Radosław Sikorski</span>
+                    <span class="client-name">Leszek Czarnecki</span>
+                </div>
+                
+                <div class="clients-divider"></div>
+                
+                <div class="clients-column right">
+                    <span class="client-name">Magda Gessler</span>
+                    <span class="client-name">Jolanta Pieńkowska</span>
+                    <span class="client-name">Jan Vincent Rostowski</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="divider">
+        <span class="divider-symbol">§</span>
+    </div>
     <section id="faq" class="faq-section">
         <div class="section-container">
             <div class="section-header fade-up">
@@ -1741,7 +1946,7 @@
                     </div>
                     <div class="faq-answer">
                         <div class="faq-answer-inner" data-pl="Najlepiej opisać problem w mailu na adres <a href='mailto:kancelaria@giertych.com.pl'>kancelaria@giertych.com.pl</a> i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej. Można również zadzwonić pod numer <a href='tel:+48224240736'>+48 22 424 07 36</a> lub w sprawach nagłych: <a href='tel:+48503011501'>+48 503 011 501</a>." data-en="The best way is to describe your problem in an email to <a href='mailto:kancelaria@giertych.com.pl'>kancelaria@giertych.com.pl</a> and attach copies of the most important documents. We will try to respond as soon as possible. You can also call <a href='tel:+48224240736'>+48 22 424 07 36</a> or for urgent matters: <a href='tel:+48503011501'>+48 503 011 501</a>.">
-                            Najlepiej opisać problem w mailu na adres <a href="mailto:kancelaria@giertych.com.pl">kancelaria@giertych.com.pl</a> i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej. Można również zadzwonić pod numer <a href="tel:+48224240736">+48 22 424 07 36</a> lub w sprawach nagłych: <a href="tel:+48503011501">+48 503 011 501</a>.
+                            Najlepiej opisać problem w mailu na adres <a href="/cdn-cgi/l/email-protection#dab1bbb4b9bfb6bba8b3bb9abdb3bfa8aea3b9b2f4b9b5b7f4aab6"><span class="__cf_email__" data-cfemail="e98288878a8c85889b8088a98e808c9b9d908a81c78a8684c79985">[email&#160;protected]</span></a> i załączyć kopię najważniejszych dokumentów. Postaramy się odpowiedzieć jak najszybciej. Można również zadzwonić pod numer <a href="tel:+48224240736">+48 22 424 07 36</a> lub w sprawach nagłych: <a href="tel:+48503011501">+48 503 011 501</a>.
                         </div>
                     </div>
                 </div>
@@ -1916,9 +2121,9 @@
                     <div class="contact-row">
                         <div>
                             <span class="c-label" data-pl="E-mail" data-en="E-mail">E-mail</span>
-                            <div class="c-value">kancelaria@giertych.com.pl</div>
+                            <div class="c-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f646e616c6a636e7d666e4f68666a7d7b766c67216c6062217f63">[email&#160;protected]</a></div>
                         </div>
-                        <a href="mailto:kancelaria@giertych.com.pl" class="contact-action-btn" title="Napisz e-mail">
+                        <a href="/cdn-cgi/l/email-protection#741f151a17111815061d1534131d1106000d171c5a171b195a0418" class="contact-action-btn" title="Napisz e-mail">
                             <i class="ph ph-envelope"></i>
                         </a>
                     </div>
@@ -1968,7 +2173,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.body.classList.add('loading');
         
         window.addEventListener('load', () => {
@@ -1985,7 +2190,7 @@
             
             setTimeout(() => {
                 preloaderLogo.classList.add('active');
-            }, 100);
+            }, 50);
             
             setTimeout(() => {
                 if (shineGradient) {
@@ -2009,13 +2214,13 @@
                         }
                     }, 25); 
                 }
-            }, 800);
+            }, 300);
             
             setTimeout(() => {
                 window.scrollTo(0, 0);
                 preloader.classList.add('hidden');
                 document.body.classList.remove('loading');
-            }, 4500); 
+            }, 3000); 
         });
 
         setTimeout(() => {
@@ -2029,9 +2234,9 @@
                     window.scrollTo(0, 0);
                     preloader.classList.add('hidden');
                     document.body.classList.remove('loading');
-                }, 4000);
+                }, 2500);
             }
-        }, 7000);
+        }, 5000);
 
         const observerOptions = {
             threshold: 0.1,
@@ -2221,20 +2426,4 @@
             map.touchZoom.disable();
             map.doubleClickZoom.disable();
             map.scrollWheelZoom.disable();
-        });
-
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            maxZoom: 19
-        }).addTo(map);
-
-        var customIcon = L.icon({
-            iconUrl: 'logo-mapa.png',
-            iconSize: [50, 50],
-            iconAnchor: [25, 50],
-            popupAnchor: [0, -50]
-        });
-
-        L.marker([lat, lon], {icon: customIcon}).addTo(map);
-    });
-</script>
-</html>
+ 
