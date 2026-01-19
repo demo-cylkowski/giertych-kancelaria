@@ -218,31 +218,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        var lat = 52.2338177100163;
-        var lon = 21.018876046596603;
-        var map = L.map('map', {
-            center: [lat, lon],
-            zoom: 17,
-            zoomControl: true,    
-            scrollWheelZoom: false,
-            dragging: false,
-            tap: false,
-            touchZoom: false,
-            doubleClickZoom: false,
-            attributionControl: false 
-        });
+// Mapa Leaflet
+document.addEventListener("DOMContentLoaded", function() {
+    var lat = 52.2338177100163;
+    var lon = 21.018876046596603;
+    var map = L.map('map', {
+        center: [lat, lon],
+        zoom: 17,
+        zoomControl: true,    
+        scrollWheelZoom: false,
+        dragging: false,
+        tap: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+        attributionControl: false 
+    });
 
-        map.on('click', function() {
-            map.dragging.enable();
-            map.touchZoom.enable();
-            map.doubleClickZoom.enable();
-            map.scrollWheelZoom.enable();
-        });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
 
-        map.on('mouseout', function() {
-            map.dragging.disable();
-            map.touchZoom.disable();
-            map.doubleClickZoom.disable();
-            map.scrollWheelZoom.disable();
- 
+    var logoIcon = L.icon({
+        iconUrl: 'logo-mapa.png',
+        iconSize: [60, 60],
+        iconAnchor: [30, 60],
+        popupAnchor: [0, -60]
+    });
+
+    var marker = L.marker([lat, lon], {icon: logoIcon}).addTo(map);
+    marker.bindPopup('<strong>Kancelaria Adwokacka</strong><br>ul. Nowy Świat 35 lokal 4<br>00-029 Warszawa');
+
+    map.on('click', function() {
+        map.dragging.enable();
+        map.touchZoom.enable();
+        map.doubleClickZoom.enable();
+        map.scrollWheelZoom.enable();
+    });
+
+    map.on('mouseout', function() {
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+    });
+});
