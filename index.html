@@ -714,11 +714,12 @@
             float: left;
             font-family: 'Cinzel', serif;
             font-size: 4.5rem;
-            line-height: 0.8;
-            padding-right: 1rem;
-            padding-top: 0.2rem;
+            line-height: 1;
+            padding-right: 0.8rem;
+            padding-top: 0.1rem;
+            margin-bottom: 0;
             color: var(--green-racing);
-        
+            font-weight: 500;
         }
 
         .services-section {
@@ -943,8 +944,17 @@
                 gap: 1rem;
             }
 
+            .clients-column.left {
+                padding-bottom: 0;
+            }
+
+            .clients-column.right {
+                padding-top: 1rem;
+            }
+
             .client-name {
                 font-size: 1.25rem;
+                padding: 0.5rem 0;
             }
 
             .client-name::after {
@@ -1434,7 +1444,28 @@
 
         @media (max-width: 1200px) {
             .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .services-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
             }
         }
 
@@ -1534,10 +1565,6 @@
 
             .hero-title span {
                 font-size: 1.3rem;
-            }
-
-            .services-grid { 
-                grid-template-columns: 1fr; 
             }
 
             section {
@@ -1913,16 +1940,16 @@
             <div class="clients-wrapper fade-up">
                 <div class="clients-column left">
                     <span class="client-name">Donald Tusk</span>
-                    <span class="client-name">Radosław Sikorski</span>
                     <span class="client-name">Leszek Czarnecki</span>
+                    <span class="client-name">Jolanta Pieńkowska</span>
                 </div>
                 
                 <div class="clients-divider"></div>
                 
                 <div class="clients-column right">
-                    <span class="client-name">Magda Gessler</span>
-                    <span class="client-name">Jolanta Pieńkowska</span>
+                    <span class="client-name">Radosław Sikorski</span>
                     <span class="client-name">Jan Vincent Rostowski</span>
+                    <span class="client-name">Magda Gessler</span>
                 </div>
             </div>
         </div>
@@ -2121,9 +2148,9 @@
                     <div class="contact-row">
                         <div>
                             <span class="c-label" data-pl="E-mail" data-en="E-mail">E-mail</span>
-                            <div class="c-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f646e616c6a636e7d666e4f68666a7d7b766c67216c6062217f63">[email&#160;protected]</a></div>
+                            <div class="c-value">kancelaria@giertych.com.pl</div>
                         </div>
-                        <a href="/cdn-cgi/l/email-protection#741f151a17111815061d1534131d1106000d171c5a171b195a0418" class="contact-action-btn" title="Napisz e-mail">
+                        <a href="mailto:kancelaria@giertych.com.pl" class="contact-action-btn" title="Napisz e-mail">
                             <i class="ph ph-envelope"></i>
                         </a>
                     </div>
@@ -2414,6 +2441,25 @@
             attributionControl: false 
         });
 
+        // Dodaj warstwę kafelków z CARTO (elegancki styl)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        // Customowa ikonka z logo
+        var logoIcon = L.icon({
+            iconUrl: 'logo-mapa.png',
+            iconSize: [60, 60],
+            iconAnchor: [30, 60],
+            popupAnchor: [0, -60]
+        });
+
+        // Dodaj marker z customową ikonką
+        var marker = L.marker([lat, lon], {icon: logoIcon}).addTo(map);
+        marker.bindPopup('<strong>Kancelaria Adwokacka</strong><br>ul. Nowy Świat 35 lokal 4<br>00-029 Warszawa');
+
         map.on('click', function() {
             map.dragging.enable();
             map.touchZoom.enable();
@@ -2426,4 +2472,7 @@
             map.touchZoom.disable();
             map.doubleClickZoom.disable();
             map.scrollWheelZoom.disable();
- 
+        });
+    });
+</script>
+</html>
