@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }).addTo(map);
 
     var logoIcon = L.icon({
-        iconUrl: 'logo-mapa.png',
+        iconUrl: 'images/logo-mapa.png',
         iconSize: [60, 60],
         iconAnchor: [30, 60],
         popupAnchor: [0, -60]
