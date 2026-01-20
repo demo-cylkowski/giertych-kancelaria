@@ -218,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Mapa Leaflet
 document.addEventListener("DOMContentLoaded", function() {
     var lat = 52.2338177100163;
     var lon = 21.018876046596603;
@@ -263,4 +262,21 @@ document.addEventListener("DOMContentLoaded", function() {
         map.doubleClickZoom.disable();
         map.scrollWheelZoom.disable();
     });
+
+    function openMapsApp() {
+        var lat = 52.2338177100163;
+        var lon = 21.018876046596603;
+        var address = "Nowy Świat 35, 00-029 Warszawa, Poland";
+        
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+        var isMac = /Mac/.test(navigator.platform) && !isIOS;
+        
+        if (isIOS || isMac) {
+            window.open("https://maps.apple.com/?address=" + encodeURIComponent(address) + "&ll=" + lat + "," + lon, "_blank");
+        } else {
+            window.open("https://www.google.com/maps/search/?api=1&query=" + lat + "," + lon, "_blank");
+        }
+    }
+
 });

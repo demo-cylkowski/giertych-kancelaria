@@ -373,6 +373,7 @@ nav a {
     transition: color 0.3s ease;
     position: relative;
     padding: 10px 0;
+    white-space: nowrap;
 }
 
 nav a::after {
@@ -1501,6 +1502,15 @@ footer {
     }
     .logo {
         margin-left: -0.5rem;
+        width: 150px;
+    }
+    
+    .logo-svg {
+        height: 190px;
+    }
+
+    .contact-map {
+        min-height: 350px;
     }
 }
 
@@ -1609,7 +1619,7 @@ footer {
 @media (max-width: 480px) {
     .preloader-logo-container {
         width: 650px;
-        max-width: clamp(60vw, 72vw, 80vw);/
+        max-width: clamp(60vw, 72vw, 80vw);
         position: relative;
     }
 
@@ -1629,6 +1639,22 @@ footer {
 
     .drop-cap {
         font-size: 3rem;
+    }
+
+    .contact-details h3 {
+        font-size: 1.4rem;
+    }
+    
+    .c-value {
+        font-size: 1.1rem;
+    }
+    
+    .contact-layout {
+        padding: 1.5rem;
+    }
+    
+    .modal-content {
+        padding: 2rem 1.5rem;
     }
 }
 
@@ -1673,4 +1699,37 @@ footer {
     margin-top: -45px; 
     filter: invert(61%) sepia(16%) saturate(1028%) hue-rotate(358deg) brightness(92%) contrast(87%);
     opacity: 0.9;
+}
+
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-title span {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .faq-question {
+        padding: 1.2rem 1rem;
+    }
+    
+    .faq-question h3 {
+        font-size: 0.95rem;
+        padding-right: 1rem;
+    }
+    
+    .faq-answer-inner {
+        padding: 0 1rem 1.2rem;
+        font-size: 0.95rem;
+    }
 }
